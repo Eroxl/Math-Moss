@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SubSuperScript from './SubSuperScript';
+
 type SubScriptProps = {
   children: React.ReactNode | React.ReactNode[];
 }
@@ -8,14 +10,12 @@ const SubScript: React.FC<SubScriptProps> = (props) => {
   const { children } = props;
 
   return (
-    <span
-      style={{
-        fontSize: '0.6em',
-        verticalAlign: '-50%',
-      }}
-    >
-      {children}
-    </span>
+    <SubSuperScript>
+      <span />
+      <span>
+        {children}
+      </span>
+    </SubSuperScript>
   );
 };
 

@@ -24,6 +24,7 @@ const SubSuperScript: React.FC<SubSuperScriptProps> = (props) => {
           display: 'block',
           textAlign: "center",
           width: "100%",
+          paddingBottom: "0.05em",
         }}
       >
         {superScriptElement}

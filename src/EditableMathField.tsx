@@ -15,21 +15,31 @@ const EditableMathField = () => {
         textAlign: 'center',
       }}
     >
-      <span>
-        <var>x</var>
-        <SubSuperScript>
-            {"2"}
-            {"2"}
-        </SubSuperScript>
-        + <var>x</var>
-        <SuperScript>
-          2
-        </SuperScript>
-        + <var>x</var>
-        <SubScript>
-          2
-        </SubScript>
-      </span>
+      <var>f(x) = </var>
+      <Fraction>
+        <span>
+          <var>x</var>
+          <SubSuperScript>
+              <Fraction>
+                {"1"}
+                {"2"}
+              </Fraction>
+              {"2"}
+          </SubSuperScript>
+          + <var>x</var>
+          <SuperScript>
+            <Fraction>
+              {"1"}
+              {"2"}
+            </Fraction>
+          </SuperScript>
+          + <var>x</var>
+          <SubScript>
+            2
+          </SubScript>
+        </span>
+        {"2"}
+      </Fraction>
     </span>
   )
 }
