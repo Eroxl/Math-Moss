@@ -12,34 +12,25 @@ const Fraction: React.FC<FractionProps> = (props) => {
       verticalAlign: '-0.55em',
       textAlign: 'center',
       fontSize: '80%',
-      margin: '0 0.15em',
     }}>
-      {/* Denominator */}
+      {/* Numerator */}
       <span style={{
         display: 'block',
         textAlign: "center",
         width: "100%",
+        padding: '0 0.2em',
       }}>
         {props.children[0]}
       </span>
 
-      {/* Fraction Line */}
-      <hr
-        style={{
-          width: "100%",
-          border: "0.03em solid black",
-          margin: "0 -0.15em",
-          textAlign: "center",
-          padding: "0px 0.15em",
-        }}
-      />
-
-      {/* Numerator */}
+      {/* Denominator */}
       <span style={{
         display: 'block',
         float: 'right',
         textAlign: "center",
         width: "100%",
+        borderTop: "0.06em solid black",
+        padding: '0 0.2em',
       }}>
         {props.children[1]}
       </span>
