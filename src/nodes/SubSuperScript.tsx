@@ -1,5 +1,8 @@
 import React from 'react';
 
+import styles from '../styles/SubSuperScript.module.css';
+import commonStyles from '../styles/Common.module.css';
+
 type SubSuperScriptProps = {
   children: [React.ReactNode, React.ReactNode];
 }
@@ -10,44 +13,16 @@ const SubSuperScript: React.FC<SubSuperScriptProps> = (props) => {
   const [superScriptElement, subScriptElement] = children;
 
   return (
-    <span
-      style={{
-        display: 'inline-block',
-        position: 'relative',
-        verticalAlign: '-0.55em',
-        textAlign: 'center',
-        fontSize: '0.6em',
-      }}
-    >
-      <span
-        style={{
-          display: 'block',
-          textAlign: "center",
-          width: "100%",
-          paddingBottom: "0.05em",
-        }}
-      >
+    <span className={styles.wrapper}>
+      <span className={styles.superScript}>
         {superScriptElement}
       </span>
-      <span
-        style={{
-          display: 'block',
-          float: 'right',
-          textAlign: "center",
-          width: "100%",
-        }}
-      >
+
+      <span className={styles.subScript}>
         {subScriptElement}
       </span>
 
-
-      {/* Zero Width Space Character For Alignment */}
-      <span
-        style={{
-          display: "inline-block",
-          width: "0px",
-        }}
-      >
+      <span className={commonStyles.aligner}>
         {"\u200b"}
       </span>
     </span>

@@ -21,7 +21,13 @@ const EditableMathField = () => {
       <var>f(x) = </var>
       <Integral />
       <Fraction>
-        <span>
+        <span
+          style={{
+            height: "100%",
+            display: "inline-block",
+            position: "relative",
+          }}
+        >
           <Integral />
           <var>x</var>
           <SubSuperScript>

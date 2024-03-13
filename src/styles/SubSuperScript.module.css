@@ -1,0 +1,21 @@
+.wrapper {
+  display: inline-block;
+  position: relative;
+  vertical-align: -0.55em;
+  text-align: center;
+  font-size: 0.6em;
+}
+
+.superScript {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 0 0.05em;
+}
+
+.subScript {
+  display: block;
+  float: right;
+  text-align: center;
+  width: 100%;
+}
