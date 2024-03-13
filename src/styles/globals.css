@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Symbola';
+  src: url('../fonts/Symbola.ttf') format('truetype');
+}
+
+* {
+  font-family: 'Symbola', 'Times New Roman', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+var {
+  font-family: 'Times New Roman', sans-serif;
+}
