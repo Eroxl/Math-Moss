@@ -19,7 +19,10 @@ const EditableMathField = () => {
       }}
     >
       <var>f(x) = </var>
-      <Integral />
+      <Integral 
+        upperBound={<var>a</var>}
+        lowerBound={<var>b</var>}
+      />
       <Fraction>
         <span
           style={{
@@ -28,7 +31,14 @@ const EditableMathField = () => {
             position: "relative",
           }}
         >
-          <Integral />
+          <Integral
+            lowerBound={
+              <Fraction>
+                {"1"}
+                {"2"}
+              </Fraction>
+            }
+          />
           <var>x</var>
           <SubSuperScript>
               <span>

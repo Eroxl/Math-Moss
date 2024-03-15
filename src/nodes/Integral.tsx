@@ -1,18 +1,34 @@
 import React from 'react';
 
-const Integral: React.FC = () => {
+import styles from '../styles/Integral.module.css';
+
+type IntegralProps = {
+  lowerBound?: React.ReactNode;
+  upperBound?: React.ReactNode;
+};
+
+const Integral: React.FC<IntegralProps> = (props) => {
+  const {
+    lowerBound,
+    upperBound
+  } = props;
+
   return (
     <span
-      style={{
-        margin: '0 0.15em 0.3em 0.15em',
-        fontSize: '1.5em',
-        verticalAlign: '-0.05em',
-        position: 'relative',
-        display: 'inline-block',
-        transform: 'scale(1, 1.25)'
-      }}
-    >
+      className={styles.integral}
+    >  
       ∫
+      <span className={styles.bounds}>
+        <span className={styles.upperBound}>
+          {upperBound || "\u200b"}
+        </span>
+
+        <span className={styles.lowerBound}>
+          <span>
+            {lowerBound || "\u200b"}
+          </span>
+        </span>
+      </span>
     </span>
   );
 };

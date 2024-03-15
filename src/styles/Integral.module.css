@@ -1,0 +1,38 @@
+.integral {
+  font-size: 1.5em;
+  vertical-align: -0.05em;
+  position: relative;
+  transform: scale(1, 1.25);
+  padding-bottom: 0.25em;
+  max-height: calc(1em * 1.25);
+  display: inline-flex;
+}
+
+.integral .bounds {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.integral .bounds > * {
+  font-size: 0.25em;
+} 
+
+.integral .upperBound {
+  display: block;
+  width: 100%;
+  min-height: 50%;
+  position: relative;
+  top: -0.2em;
+}
+
+.integral .lowerBound {
+  display: flex;
+  float: right;
+  width: 100%;
+  min-height: 50%;
+  position: relative;
+  align-items: flex-end;
+  left: -0.8em;
+  bottom: -0.2em;
+}
