@@ -1,0 +1,26 @@
+.wrapper {
+  display: inline-block;
+  text-align: center;
+  font-size: 1.5em;
+  vertical-align: -0.55em;
+  margin: 0 0.15em;
+}
+
+.bigOperator {
+  display: block;
+  width: 100%;
+}
+
+.upperBound {
+  display: block;
+  width: 100%;
+}
+
+.lowerBound {
+  display: block;
+  width: 100%;
+}
+
+.upperBound, .lowerBound {
+  font-size: 0.25em;
+}
