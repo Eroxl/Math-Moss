@@ -3,20 +3,18 @@ import React from 'react';
 import SubSuperScript from './SubSuperScript';
 
 type SuperScriptProps = {
-  children: React.ReactNode | React.ReactNode[];
+  value: React.ReactNode;
 }
 
 const SuperScript: React.FC<SuperScriptProps> = (props) => {
-  const { children } = props;
+  const { value } = props;
 
   return (
-    <SubSuperScript>
-      <span>
-        {children}
-      </span>
-      <span></span>
-    </SubSuperScript>
-  )
+    <SubSuperScript
+      subScript={null}
+      superScript={value}
+    />
+  );
 };
 
 export default SuperScript;

@@ -4,18 +4,24 @@ import styles from '../styles/Fraction.module.css';
 import commonStyles from '../styles/Common.module.css';
 
 type FractionProps = {
-  children: [React.ReactNode, React.ReactNode];
+  denominator: React.ReactNode;
+  numerator: React.ReactNode;
 }
 
 const Fraction: React.FC<FractionProps> = (props) => {
+  const {
+    denominator,
+    numerator,
+  } = props;
+
   return (
     <span className={styles.fraction}>
       <span className={styles.numerator}>
-        {props.children[0]}
+        {numerator}
       </span>
 
       <span className={styles.denominator}>
-        {props.children[1]}
+        {denominator}
       </span>
 
       <span className={commonStyles.aligner}>

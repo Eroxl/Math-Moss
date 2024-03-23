@@ -1,7 +1,6 @@
 import React from 'react';
 
 import styles from '../../styles/OversetBigOperator.module.css'
-import commonStyles from '../../styles/Common.module.css';
 
 type BigOperatorProps = {
   lowerBound?: React.ReactNode;
@@ -9,7 +8,7 @@ type BigOperatorProps = {
 };
 
 const createOversetBigOperator = (operator: string) => {
-  const BigOperator: React.FC<BigOperatorProps> = (props) => {
+  const OversetBigOperator: React.FC<BigOperatorProps> = (props) => {
     const {
       lowerBound,
       upperBound
@@ -36,7 +35,7 @@ const createOversetBigOperator = (operator: string) => {
     );
   };
 
-  return BigOperator;
+  return OversetBigOperator;
 };
 
 export default createOversetBigOperator;

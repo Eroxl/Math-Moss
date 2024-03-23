@@ -4,22 +4,24 @@ import styles from '../styles/SubSuperScript.module.css';
 import commonStyles from '../styles/Common.module.css';
 
 type SubSuperScriptProps = {
-  children: [React.ReactNode, React.ReactNode];
+  superScript: React.ReactNode;
+  subScript: React.ReactNode;
 }
 
 const SubSuperScript: React.FC<SubSuperScriptProps> = (props) => {
-  const { children } = props;
-
-  const [superScriptElement, subScriptElement] = children;
+  const { 
+    subScript,
+    superScript
+   } = props;
 
   return (
     <span className={styles.wrapper}>
       <span className={styles.superScript}>
-        {superScriptElement}
+        {superScript}
       </span>
 
       <span className={styles.subScript}>
-        {subScriptElement}
+        {subScript}
       </span>
 
       <span className={commonStyles.aligner}>

@@ -1,13 +1,11 @@
 import React from 'react';
 
 import SuperScript from './nodes/SuperScript';
-
-import './styles/globals.css';
-import createOversetBigOperator from './nodes/factories/createOversetBigOperator';
 import Caret from './components/Caret';
+import createSidesetBigOperator from './nodes/factories/createSidesetBigOperator';
+import './styles/globals.css';
 
-const Sum = createOversetBigOperator('∑');
-const Product = createOversetBigOperator('∏');
+const Integral = createSidesetBigOperator('∫');
 
 const EditableMathField = () => {
   return (
@@ -19,10 +17,15 @@ const EditableMathField = () => {
         textAlign: 'center',
       }}
     >
-      <var>f(x) = x</var>
-      <SuperScript>
-        2
-      </SuperScript>
+      <var>f(x) = </var>
+      <Integral
+        lowerBound={<var>a</var>}
+        upperBound={<var>b</var>}
+      />    
+      <var>x</var>
+      <SuperScript
+        value={2}
+      />
       <Caret />
     </span>
   )
