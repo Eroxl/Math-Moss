@@ -44,6 +44,7 @@
     "@note-rack/editor": "^1.0.6",
     "@unified-latex/unified-latex-util-parse": "^1.7.0",
     "css-loader": "^6.10.0",
+    "hotscript": "^1.0.13",
     "postcss-loader": "^8.1.1",
     "style-loader": "^3.3.4",
     "unified": "^11.0.4"

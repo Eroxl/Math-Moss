@@ -14,7 +14,7 @@ const createSetBigOperatorsSchema = <
     .map(
       ({ character, latex }) => (
         [
-          latex as TrimLeft<T[number]['latex'], '\\'>,
+          (latex.replace('\\', '')) as TrimLeft<T[number]['latex'], '\\'>,
           {
             renderer: renderer(character),
             accepts: {

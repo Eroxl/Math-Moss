@@ -1,13 +1,19 @@
 import React from 'react';
 
-import SuperScript from './nodes/SuperScript';
-import Caret from './components/Caret';
-import createSidesetBigOperator from './nodes/factories/createSidesetBigOperator';
+import type MathNode from './types/MathNode';
+
 import './styles/globals.css';
+import renderMathNode from './lib/renderMathNode';
 
-const Integral = createSidesetBigOperator('∫');
+type EditableMathFieldProps = {
+  startingState?: (MathNode | string)[];
+};
 
-const EditableMathField = () => {
+const EditableMathField: React.FC<EditableMathFieldProps> = (props) => {
+  const {
+    startingState
+  } = props;
+
   return (
     <span
       style={{
@@ -17,16 +23,9 @@ const EditableMathField = () => {
         textAlign: 'center',
       }}
     >
-      <var>f(x) = </var>
-      <Integral
-        lowerBound={<var>a</var>}
-        upperBound={<var>b</var>}
-      />    
-      <var>x</var>
-      <SuperScript
-        value={2}
-      />
-      <Caret />
+      {
+        startingState?.map(renderMathNode)
+      }
     </span>
   )
 }
