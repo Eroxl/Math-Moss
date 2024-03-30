@@ -2,7 +2,7 @@ import { Entries } from "hotscript/dist/internals/objects/impl/objects";
 import nodeSchemas from "../lib/constants/nodeSchemas";
 import { Pipe, Unions, Fn, Call } from "hotscript";
 
-interface Duplicate extends Fn {
+interface MathNodeMap extends Fn {
   return: this['arg0'] extends [infer Key, infer Value] 
     ? {
       type: Key;
@@ -25,7 +25,7 @@ type _GeneralMathNode = {
 type MathNode = (
   Call<
     Unions.Map<
-      Duplicate
+      MathNodeMap
     >,
     Entries<typeof nodeSchemas>
   >

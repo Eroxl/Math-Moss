@@ -5,6 +5,7 @@ import EditableMathField from '../EditableMathField';
 import type MathNode from '../types/MathNode';
 
 const startingNodes: (MathNode | string)[] = [
+  "f(x)=",
   {
     type: 'int',
     args: {
