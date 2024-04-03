@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Caret = () => {
   const [blink, setBlink] = React.useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setBlink((prev) => !prev);
     }, 500);
@@ -15,6 +15,7 @@ const Caret = () => {
       style={{
         display: "inline-block",
         width: "0.025em",
+        marginLeft: '-0.025em',
         height: "1em",
         backgroundColor: blink ? "black" : "transparent",
       }}

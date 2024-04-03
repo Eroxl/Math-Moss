@@ -7,6 +7,7 @@ import type NodeSchema from "../../types/NodeSchema";
 import type LatexString from "../../types/LatexString";
 import oversetBigOperators from "./oversetBigOperators";
 import sidesetBigOperators from "./sidesetBigOperators";
+import Leaf from "../../components/Leaf";
 
 const createNodeSchema = <
   Renderer extends React.FC<any>
@@ -23,33 +24,61 @@ const createNodeSchema = <
 );
 
 const nodeSchemas = {
+  leaf: createNodeSchema(
+    Leaf,
+    {
+      content: {
+        type: 'string',
+        position: 'inline',
+      }
+    },
+    '{1}'
+  ),
   fraction: createNodeSchema(
     Fraction,
     {
-      numerator: 'node',
-      denominator: 'node',
+      numerator: {
+        type: '*',
+        position: 'above',
+      },
+      denominator: {
+        type: '*',
+        position: 'below',
+      }
     },
     '\\frac{1}{2}'
   ),
   subScript: createNodeSchema(
     SubScript,
     {
-      value: 'node',
+      value: {
+        type: '*',
+        position: 'below',
+      }
     },
     '_{1}'
   ),
   superScript: createNodeSchema(
     SuperScript,
     {
-      value: 'node',
+      value: {
+        type: '*',
+        position: 'above',
+      }
     },
     '^{1}'
   ),
   subSuperScript: createNodeSchema(
     SubSuperScript,
     {
-      superScript: 'node',
-      subScript: 'node',
+      superScript: {
+        type: 'superScript',
+        position: 'above',
+      },
+      subScript: {
+        type: 'subScript',
+        position: 'below',
+      }
     },
     '^{1}_{2}'
   ),

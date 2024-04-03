@@ -4,20 +4,51 @@ import { createRoot } from 'react-dom/client';
 import EditableMathField from '../EditableMathField';
 import type MathNode from '../types/MathNode';
 
-const startingNodes: (MathNode | string)[] = [
-  "f(x)=",
+const startingNodes: MathNode[] = [
+  {
+    type: 'leaf',
+    args: {
+      content: 'f(x)=',
+    }
+  },
   {
     type: 'int',
     args: {
-      lowerBound: '0',
-      upperBound: '1',
+      lowerBound: {
+        type: 'leaf',
+        args: {
+          content: '0',
+        }
+      },
+      upperBound: {
+        type: 'leaf',
+        args: {
+          content: '1',
+        }
+      },
     }
   },
-  "x",
+  {
+    type: 'leaf',
+    args: {
+      content: 'x',
+    }
+  },
   {
     type: 'superScript',
     args: {
-      value: '2'
+      value: {
+        type: 'leaf',
+        args: {
+          content: '2',
+        }
+      }
+    }
+  },
+  {
+    type: 'leaf',
+    args: {
+      content: ' dx',
     }
   }
 ]

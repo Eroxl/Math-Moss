@@ -1,6 +1,6 @@
 import { Entries } from "hotscript/dist/internals/objects/impl/objects";
 import nodeSchemas from "../lib/constants/nodeSchemas";
-import { Pipe, Unions, Fn, Call } from "hotscript";
+import { Unions, Fn, Call } from "hotscript";
 
 interface MathNodeMap extends Fn {
   return: this['arg0'] extends [infer Key, infer Value] 
@@ -8,30 +8,34 @@ interface MathNodeMap extends Fn {
       type: Key;
       args: Value extends { accepts: infer U }
         ? {
-          [key in keyof U]: _GeneralMathNode | string;
+          [key in keyof U]?: _GeneralMathNode | string;
         }
         : never
     }
     : never
 }
 
-type _GeneralMathNode = {
-  type: keyof typeof nodeSchemas;
+export type LeafNode = {
+  type: 'leaf';
   args: {
-    [key: string]: _GeneralMathNode | string;
+    content: string;
   }
 }
+
+type _GeneralMathNode = {
+  type: keyof Omit<typeof nodeSchemas, 'leaf'>;
+  args: {
+    [key: string]: _GeneralMathNode;
+  }
+} | LeafNode
 
 type MathNode = (
   Call<
     Unions.Map<
       MathNodeMap
     >,
-    Entries<typeof nodeSchemas>
+    Entries<Omit<typeof nodeSchemas, 'leaf'>>
   >
-  | {
-    type: 'leaf';
-  }
-);
+) | LeafNode;
 
 export default MathNode;

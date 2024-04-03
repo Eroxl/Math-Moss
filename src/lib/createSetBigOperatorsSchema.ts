@@ -18,8 +18,14 @@ const createSetBigOperatorsSchema = <
           {
             renderer: renderer(character),
             accepts: {
-              lowerBound: 'node',
-              upperBound: 'node',
+              lowerBound: {
+                type: 'subScript',
+                position: 'below',
+              },
+              upperBound: {
+                type: 'superScript',
+                position: 'above',
+              }
             },
             latex: `${latex}_{1}^{2}`,
           }
