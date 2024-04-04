@@ -1,16 +1,25 @@
+import { Unions, Fn, Call, Strings } from "hotscript";
+
+interface NameToArg extends Fn {
+  return: `{${this['arg0']}}`
+}
+
 type LatexArgs<
-  Args extends any[],
-  Acc extends unknown[] = [1]
+  Args extends string
 > = (
-  [1, ...Args]['length'] extends Acc['length']
-    ? ''
-    : `{${Acc['length']}}${string}${LatexArgs<Args, [ ...Acc, any ]>}`
+  Call<
+    Unions.Map<NameToArg>,
+    Args
+  >
 )
 
 type LatexString<
   Args extends any[]
 > = (
-  `${string}${LatexArgs<Args>}`
+  Call<
+    Strings.Repeat<Args['length']>,
+    `${string}${LatexArgs<Args[number][0]>}`
+  >
 )
 
 export default LatexString;

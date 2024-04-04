@@ -6,6 +6,7 @@ import renderMathNode from './lib/renderMathNode';
 import CaretContext from './contexts/CaretContext';
 import './styles/globals.css';
 import updateLeaf from './lib/updateLeaf';
+import copyHandler from './lib/copyHandler';
 
 type EditableMathFieldProps = {
   startingState?: MathNode[];
@@ -26,6 +27,13 @@ const EditableMathField: React.FC<EditableMathFieldProps> = (props) => {
     path: '1.upperBound'
   });
 
+  useEffect(() => {
+    document.addEventListener('copy', copyHandler);
+
+    return () => {
+      document.removeEventListener('copy', copyHandler);
+    };
+  }, []);
 
   useEffect(() => {    
     const handleSelectionChange = (e: Event) => {

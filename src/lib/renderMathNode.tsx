@@ -26,10 +26,16 @@ const renderMathNode = (
   const subNodes = Object.fromEntries(subNodeEntries);
 
   return (
-    <Renderer
-      {...subNodes}
-      path={path}
-    />
+    <span
+      data-latex={nodeSchemas[node.type].latex}
+      data-path={path}
+      data-type={node.type}
+    >
+      <Renderer
+        {...subNodes}
+        path={path}
+      />
+    </span>
   )
 };
 

@@ -32,7 +32,7 @@ const nodeSchemas = {
         position: 'inline',
       }
     },
-    '{1}'
+    '{content}'
   ),
   fraction: createNodeSchema(
     Fraction,
@@ -46,7 +46,7 @@ const nodeSchemas = {
         position: 'below',
       }
     },
-    '\\frac{1}{2}'
+    '\\frac{numerator}{denominator}'
   ),
   subScript: createNodeSchema(
     SubScript,
@@ -56,7 +56,7 @@ const nodeSchemas = {
         position: 'below',
       }
     },
-    '_{1}'
+    '_{value}'
   ),
   superScript: createNodeSchema(
     SuperScript,
@@ -66,7 +66,7 @@ const nodeSchemas = {
         position: 'above',
       }
     },
-    '^{1}'
+    '^{value}'
   ),
   subSuperScript: createNodeSchema(
     SubSuperScript,
@@ -80,7 +80,7 @@ const nodeSchemas = {
         position: 'below',
       }
     },
-    '^{1}_{2}'
+    '^{superScript}_{subScript}'
   ),
   ...oversetBigOperators,
   ...sidesetBigOperators,

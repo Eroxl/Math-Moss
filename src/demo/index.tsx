@@ -21,9 +21,20 @@ const startingNodes: MathNode[] = [
         }
       },
       upperBound: {
-        type: 'leaf',
+        type: 'fraction',
         args: {
-          content: '1',
+          numerator: {
+            type: 'leaf',
+            args: {
+              content: '1',
+            }
+          },
+          denominator: {
+            type: 'leaf',
+            args: {
+              content: 'x',
+            }
+          }
         }
       },
     }

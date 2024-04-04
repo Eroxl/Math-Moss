@@ -27,7 +27,7 @@ const createSetBigOperatorsSchema = <
                 position: 'above',
               }
             },
-            latex: `${latex}_{1}^{2}`,
+            latex: `${latex}_{lowerBound}^{upperBound}`,
           }
         ]
       )
