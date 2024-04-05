@@ -12,7 +12,7 @@ const renderMathNode = (
   } = nodeSchemas[node.type];
 
   const subNodeEntries = Object
-    .entries(node.args)
+    .entries(node.args || {})
     .map(([key, value]) => ([
       key,
       node.type === 'leaf'

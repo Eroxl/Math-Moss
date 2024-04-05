@@ -6,7 +6,7 @@ import Caret from './Caret';
 import getCaretSide from '../lib/getCaretSide';
 
 type LeafProps = {
-  content: string;
+  content?: string;
   path: string;
 };
 
@@ -74,15 +74,13 @@ const Leaf: React.FC<LeafProps> = (props) => {
 
         const offset = +(event.target.dataset.index || 0) + (caretSide === 'right' ? 1 : 0);
 
-        console.log('Clicked on leaf', offset, path);
-
         setCaretState({
           offset,
           path
         });
       }}
     >
-      {italizeVariables(content)}
+      {italizeVariables(content || '')}
     </span>
   );
 };

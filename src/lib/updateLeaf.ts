@@ -1,5 +1,7 @@
 import MathNode, { LeafNode } from "../types/MathNode";
 import type { CaretState } from "../contexts/CaretContext";
+import checkForNewNodes from "./checkForNewNodes";
+import nodeSchemas from "./constants/nodeSchemas";
 
 const getNewContent = (
   leaf: LeafNode,
@@ -29,7 +31,7 @@ const updateLeaf = (
   caretState: CaretState,
   deleteCount: number = 0,
 ): [MathNode[], CaretState] => {
-  const { path: leafPath } = caretState;
+  let { path: leafPath } = caretState;
 
   const [index, ...pathParts] = leafPath.split('.');
 
@@ -45,28 +47,37 @@ const updateLeaf = (
     return getLeaf(node.args[(argKey!) as keyof typeof node.args], pathParts);
   }
 
-  const startingNode = stateClone[+index];
+  const endNode = getLeaf(stateClone[+index], pathParts)
 
-  if (pathParts.length === 0) {
-    if (startingNode.type !== 'leaf') return [stateClone, caretState];
+  if (endNode.type !== 'leaf') return [stateClone, caretState];
 
-    startingNode.args.content = getNewContent(startingNode, newText, caretState, deleteCount);
-    return [stateClone, {
-      offset: Math.max(0, caretState.offset + newText.length - deleteCount),
-      path: leafPath,
-    }];
+  endNode.args.content = getNewContent(endNode, newText, caretState, deleteCount);
+
+  const newNodes = checkForNewNodes(endNode.args.content);
+
+  if (newNodes) {
+   (endNode.type as any) = 'group';
+
+    (endNode.args as any) = Object.fromEntries(
+      newNodes.map((node, i) => [
+        i,
+        node,
+      ])
+    );
+
+    caretState.offset = -newText.length - 1;
+    leafPath = `${leafPath}.1.${Object.keys(nodeSchemas[newNodes[1].type].accepts)[0]}`;
+
+    console.log(leafPath);
   }
 
-  const leaf = getLeaf(startingNode, pathParts);
-
-  if (leaf.type !== 'leaf') return [stateClone, caretState];
-
-  leaf.args.content = getNewContent(leaf, newText, caretState, deleteCount);
-
-  return [stateClone, {
-    offset: Math.max(0, caretState.offset + newText.length - deleteCount),
-    path: leafPath,
-  }];
+  return [
+    stateClone,
+    {
+      offset: Math.max(0, caretState.offset + newText.length - deleteCount),
+      path: leafPath,
+    }
+  ];
 };
 
 export default updateLeaf;

@@ -10,6 +10,7 @@ type NodeSchema<Renderer extends React.FC<any>> = {
     }
   },
   latex: LatexString<ObjectToArray<NodeSchema<Renderer>['accepts']>>;
+  bind?: string;
 }
 
 export default NodeSchema;

@@ -8,6 +8,7 @@ import type LatexString from "../../types/LatexString";
 import oversetBigOperators from "./oversetBigOperators";
 import sidesetBigOperators from "./sidesetBigOperators";
 import Leaf from "../../components/Leaf";
+import Group from "../../components/Group";
 
 const createNodeSchema = <
   Renderer extends React.FC<any>
@@ -33,6 +34,11 @@ const nodeSchemas = {
       }
     },
     '{content}'
+  ),
+  group: createNodeSchema(
+    Group,
+    {},
+    '{}'
   ),
   fraction: createNodeSchema(
     Fraction,
