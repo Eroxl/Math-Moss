@@ -67,8 +67,6 @@ const updateLeaf = (
 
     caretState.offset = -newText.length - 1;
     leafPath = `${leafPath}.1.${Object.keys(nodeSchemas[newNodes[1].type].accepts)[0]}`;
-
-    console.log(leafPath);
   }
 
   return [

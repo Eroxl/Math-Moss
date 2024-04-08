@@ -15,14 +15,26 @@ const SubSuperScript: React.FC<SubSuperScriptProps> = (props) => {
    } = props;
 
   return (
-    <span className={styles.wrapper}>
+    <span
+      className={styles.wrapper}
+      style={subScript
+        ? undefined
+        : {
+          marginBottom: "-0.55em"
+        }
+      }
+    >
       <span className={styles.superScript}>
         {superScript}
       </span>
 
-      <span className={styles.subScript}>
-        {subScript}
-      </span>
+      {
+        subScript && (
+          <span className={styles.subScript}>
+            {subScript}
+          </span>
+        )
+      }
 
       <span className={commonStyles.aligner}>
         {"\u200b"}

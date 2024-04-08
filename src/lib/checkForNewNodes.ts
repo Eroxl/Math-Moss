@@ -29,8 +29,6 @@ const checkForNewNodes = (content: string) => (
           }]))
       );
 
-      console.log(newNodeArgs);
-
       const newNode = {
         type: key,
         args: newNodeArgs,
