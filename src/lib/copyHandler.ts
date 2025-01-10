@@ -14,7 +14,10 @@ const getLatexTree = (element: HTMLElement): {
 
   if (element.dataset.type === 'leaf') {
     // ~ Return if it's a leaf in the root
-    if (!argName || /\d+/.test(argName)) return [{
+    if (
+      !argName
+      || element.dataset.path === argName
+    ) return [{
       latex: (element.textContent || '').replace(' ', '\\ '),
       type: '',
     }]
@@ -39,9 +42,22 @@ const getLatexTree = (element: HTMLElement): {
       .map(({ latex, type }) => [type, latex])
   );
 
-  const insertedLatex = latex.replace(/{(\w+)}/g, (_, key) => {
-    return `{${childrenLatex[key] || ''}}`;
-  });
+  let insertedLatex = latex
+    .replace(/{(\w+)}/g, (_, key) => {
+      return `{${childrenLatex[key] || ''}}`;
+    });
+
+  if (latex === "{}") {
+    insertedLatex = Object
+      .entries(childrenLatex)
+      .sort(([a], [b]) => {
+        return (+a) - (+b)
+      })
+      .map(([_, value]) => value)
+      .join('')
+
+    insertedLatex = `{${insertedLatex}}`;
+  }
 
   return [{
     latex: insertedLatex,

@@ -8,7 +8,7 @@ interface MathNodeMap extends Fn {
       type: Key;
       args: Value extends { accepts: infer U }
         ? {
-          [key in keyof U]?: _GeneralMathNode | string;
+          [key in keyof U]?: MathNode;
         }
         : never
     }
@@ -21,13 +21,6 @@ export type LeafNode = {
     content: string;
   }
 }
-
-type _GeneralMathNode = {
-  type: keyof Omit<typeof nodeSchemas, 'leaf'>;
-  args: {
-    [key: string]: _GeneralMathNode;
-  }
-} | LeafNode
 
 type MathNode = (
   Call<
